@@ -5,20 +5,26 @@ redWinCounter.textContent = redWinCount
 let blueWinCount = 0
 let blueWinCounter = document.querySelector("#BlueScore")
 blueWinCounter.textContent = blueWinCount
-let b = new Bike("./blueSquare.png", "North")
-let b2 = new Bike("./redSquare.png", "South")
+let b = new Bike("./blue square.png", "North")
+let b2 = new Bike("./orange square.png", "South")
 let a = new GameWindow(100,100)
 let startButton = document.querySelector('#StartButton')
-
+let speed = 5;
+let speedTag = document.querySelector("#speed")
+updateSpeedText() 
+let speedUpButton = document.querySelector("#speedUp")
+speedUpButton.addEventListener("click", speedUp)
+let speedDownButton = document.querySelector("#speedDown")
+speedDownButton.addEventListener("click", speedDown)
 startButton.addEventListener("click", startGame)
 a.displayWindow()
 function startGame() {
     a.resetWindow()
     
     
-    b.position = [50,80]
+    b.position = [50,20]
     b.direction = "North"
-    b2.position = [50,20]
+    b2.position = [50,80]
     b2.direction = "South"
     window.requestAnimationFrame(wait)
 
@@ -28,7 +34,7 @@ function startGame() {
 
 function wait() {
     
-    if (loopNum >= 10) {
+    if (loopNum >= speed) {
         loopNum = 0;
         
         if ((b.position[0] == 99 && b.direction == "South") || (b.position[0] == 0 && b.direction == "North") || (b.position[1] == 0 && b.direction == "West") || (b.position[1] == 99 && b.direction == "East")) {
@@ -89,21 +95,38 @@ document.addEventListener('keydown', function(e){
 document.addEventListener('keydown', function(e){
     if(e.repeat) return;
 
-    if(e.key === 'j' && b2.direction != "East"){
+    if(e.key === 'ArrowLeft' && b2.direction != "East"){
         b2.direction = 'West'
     }
-    if(e.key === 'i' && b2.direction != "South"){
+    if(e.key === 'ArrowUp' && b2.direction != "South"){
         b2.direction = 'North'
     }
-    if(e.key === 'l' && b2.direction != "West"){
+    if(e.key === 'ArrowRight' && b2.direction != "West"){
         b2.direction = 'East'
     }
-    if(e.key === 'k' && b2.direction != "North"){
+    if(e.key === 'ArrowDown' && b2.direction != "North"){
         b2.direction = 'South'
     }
     
 })
 
+function speedUp() {
+    if (speed > 1) {
+        speed--
+        updateSpeedText()
+    }
+}
+
+function speedDown() {
+    if (speed < 10) {
+        speed++
+        updateSpeedText()
+    }
+}
+
+function updateSpeedText() {
+    speedTag.textContent = "" + (11 - speed) 
+}
  
 
 

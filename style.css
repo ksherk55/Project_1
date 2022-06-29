@@ -1,25 +1,77 @@
 #gameWindow {
     line-height: 0;
     margin: auto;
-    width: 500px;
+    width: fit-content;
     
    
 }
+button {
+    border-radius: 0;
+    background-color: rgb(85, 85, 105);
+    border-color: rgb(85, 85, 105);
+    color: aqua;
+}
 #StartButton {
+    width: 6em;
+    font-size: 1em;
+    height: 2em;
+    display: block;
+    margin: auto;
     
     
+}
+#speedButtons {
+    width: fit-content;
+    margin:auto;
+}
+#scoreBox {
+    width: fit-content;
+    margin:auto;
+}
+#RedScoreLabel {
+    padding-left: 1em;
+}
+#speedUp {
+    font-size: 1em;
+    width: 1.3em;
+    
+}
+#speedDown {
+    font-size: 1em;
+    width: 1.3em;
     
 }
 #MenuBox {
+    font-size: 2em;
     
 }
-#Score {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+img {
+    width: 250px;
+}
+#controls {
+    width: fit-content;
+    margin:auto;
+}
+#controls div {
+    width: fit-content;
+    margin:auto;
+}
+#controlLabels span {
+    padding: 30px;
+    font-size: 2em;
+}
+
+body {
+    background-color: rgb(10, 10, 63);
+    color: aqua;
+    font-family: monospace;
     
 }
-#Score li{
-    display:inline
+
+#speedLabel {
+    padding-left: 1em;
     
+}
+#speed {
+    padding-right: 1em;
 }
