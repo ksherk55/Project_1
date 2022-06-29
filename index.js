@@ -50,6 +50,9 @@ function wait() {
             return
         }
         b.directionMove()
+        if ((b.position[0] == b2.position[0]) && (b.position[1] == b2.position[1])) {
+            return
+        }
 
         if (a.windowTiles[b.position[0]][b.position[1]].empty != true ) {
             console.log("red wins")
@@ -60,6 +63,9 @@ function wait() {
         a.windowTiles[b.position[0]][b.position[1]].empty = false
         a.windowTiles[b.position[0]][b.position[1]].spanTag.src = b.colorImage
         b2.directionMove()
+        if ((b.position[0] == b2.position[0]) && (b.position[1] == b2.position[1])) {
+            return
+        }
         if (a.windowTiles[b2.position[0]][b2.position[1]].empty != true ) {
             console.log("blue wins")
             blueWinCount++
