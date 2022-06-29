@@ -1,0 +1,25 @@
+#gameWindow {
+    line-height: 0;
+    margin: auto;
+    width: 500px;
+    
+   
+}
+#StartButton {
+    
+    
+    
+}
+#MenuBox {
+    
+}
+#Score {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+}
+#Score li{
+    display:inline
+    
+}

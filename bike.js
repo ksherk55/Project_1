@@ -1,7 +1,7 @@
 class Bike {
-    constructor(colorImage) {
+    constructor(colorImage, direction) {
         this.colorImage = colorImage
-        this.direction = "East"
+        this.direction = direction
         this.position = [50, 50]
     }
     
