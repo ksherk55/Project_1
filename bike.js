@@ -1,7 +1,12 @@
 class Bike {
     constructor(colorImage, direction) {
+        //reference to the image source
         this.colorImage = colorImage
+
+        //curent direction
         this.direction = direction
+
+        //current position
         this.position = [50, 50]
     }
     
@@ -17,11 +22,12 @@ class Bike {
             this.direction = newDirection
         }
     }
-    
+    //adds x to the bike's x position and y to the y position
     move(x,y) {
         this.position = [this.position[0] + x , this.position[1] + y]
     }
 
+    //moves in the current direction by 1
     directionMove() {
         if (this.direction == "North") {
             this.move(-1,0)

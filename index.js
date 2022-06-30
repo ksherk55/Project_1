@@ -1,23 +1,37 @@
-var loopNum = 0
+//Score counter reference for orange
 let redWinCount = 0
 let redWinCounter = document.querySelector("#RedScore")
 redWinCounter.textContent = redWinCount
+
+//Score counter reference for blue
 let blueWinCount = 0
 let blueWinCounter = document.querySelector("#BlueScore")
 blueWinCounter.textContent = blueWinCount
+
+//Instantiating "bikes" and game window
 let b = new Bike("./blue square.png", "North")
 let b2 = new Bike("./orange square.png", "South")
 let a = new GameWindow(100,100)
+a.displayWindow()
+
+//setting up start button
 let startButton = document.querySelector('#StartButton')
+startButton.addEventListener("click", startGame)
+
+//Setting up speed controls
+var loopNum = 0
 let speed = 5;
 let speedTag = document.querySelector("#speed")
 updateSpeedText() 
+
 let speedUpButton = document.querySelector("#speedUp")
 speedUpButton.addEventListener("click", speedUp)
+
 let speedDownButton = document.querySelector("#speedDown")
 speedDownButton.addEventListener("click", speedDown)
-startButton.addEventListener("click", startGame)
-a.displayWindow()
+
+
+//function attatched to start button
 function startGame() {
     a.resetWindow()
     
@@ -31,12 +45,12 @@ function startGame() {
     
 }
 
-
+//function for game loop
 function wait() {
     
     if (loopNum >= speed) {
         loopNum = 0;
-        
+        //handles border cases
         if ((b.position[0] == 99 && b.direction == "South") || (b.position[0] == 0 && b.direction == "North") || (b.position[1] == 0 && b.direction == "West") || (b.position[1] == 99 && b.direction == "East")) {
             console.log("red wins")
             redWinCount++
@@ -49,6 +63,8 @@ function wait() {
             blueWinCounter.textContent = blueWinCount
             return
         }
+
+        //blue bike movement and collision detection
         b.directionMove()
         if ((b.position[0] == b2.position[0]) && (b.position[1] == b2.position[1])) {
             return
@@ -62,6 +78,8 @@ function wait() {
         }
         a.windowTiles[b.position[0]][b.position[1]].empty = false
         a.windowTiles[b.position[0]][b.position[1]].spanTag.src = b.colorImage
+
+        //orange bike movement and collision detection
         b2.directionMove()
         if ((b.position[0] == b2.position[0]) && (b.position[1] == b2.position[1])) {
             return
@@ -74,12 +92,14 @@ function wait() {
         }
         a.windowTiles[b2.position[0]][b2.position[1]].empty = false
         a.windowTiles[b2.position[0]][b2.position[1]].spanTag.src = b2.colorImage
+        
     }
     loopNum++
     window.requestAnimationFrame(wait)
     
 }
 
+//event listeners for blue bike controls
 document.addEventListener('keydown', function(e){
     if(e.repeat) return;
 
@@ -98,6 +118,7 @@ document.addEventListener('keydown', function(e){
     
 })
 
+//event listeners for orange bike controls
 document.addEventListener('keydown', function(e){
     if(e.repeat) return;
 
@@ -116,6 +137,7 @@ document.addEventListener('keydown', function(e){
     
 })
 
+//speed up function for speed controls
 function speedUp() {
     if (speed > 1) {
         speed--
@@ -123,6 +145,7 @@ function speedUp() {
     }
 }
 
+//speed down function for speed controls
 function speedDown() {
     if (speed < 10) {
         speed++
@@ -130,6 +153,7 @@ function speedDown() {
     }
 }
 
+//updates the text for the speed
 function updateSpeedText() {
     speedTag.textContent = "" + (11 - speed) 
 }

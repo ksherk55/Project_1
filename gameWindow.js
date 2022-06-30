@@ -9,6 +9,7 @@ class GameWindow {
         }
     }
 
+    //adds the window to the html page
     displayWindow() {
         let windowContainer = document.querySelector("#gameWindow")
     
@@ -22,6 +23,7 @@ class GameWindow {
 
     }
 
+    //resets all the tiles for a new game
     resetWindow() {
         let windowContainer = document.querySelector("#gameWindow")
         for (let i = 0; i < this.windowTiles.length; i++) {
