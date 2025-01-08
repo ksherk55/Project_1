@@ -1,4 +1,4 @@
-This game is inspired by the tron light cycles game
-The bikes are controled with WASD for blue and arrow keys for orange
-Avoid crashing longer than your opponent to score a point
-In the case of a head on collision no one gets a point
+This game is inspired by Tron
+
+It is hosted at https://ksherk55.github.io/Project_1/
+
